@@ -1,0 +1,9 @@
+{
+  "pluginId": "neobase.memoire",
+  "repo": "NDesumeur/neobase-plugin-memoire",
+  "version": "1.0.0",
+  "sha256": "08c2981af95e03c183290b9bde729141f4273cfd3aff5e3746554f324f9d1d5f",
+  "approvedAt": "2026-10-31T16:22:01.593Z",
+  "neobase": ">=4.0.0",
+  "signature": "kDOsM4zXajVuUjlvjdXe/aoqXqvzbKGjJbH3hGmXeKPNmiBc44lxUQesfljHuHl3ivIXdn/X8T2HCR24Tm34AQ=="
+}
