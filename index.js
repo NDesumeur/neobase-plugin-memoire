@@ -18,7 +18,14 @@ export default async function (ctx) {
   view.innerHTML = HTML;
   const $ = id => id === "memoryApp" ? view : (view.querySelector('#' + id) || document.getElementById(id));  // les identifiants de ta vue d'abord, puis ceux de la page (fenêtres, menus)
   const doc = async n => { try { return await folder.read(n); } catch { return null; } };
-  const __icon = () => ctx.icon;  // l'icône de ce plugin
+  // chaque carte : un dessin pixel de NeoDex (ART = [palette, lignes]), dessiné une fois puis gardé
+  const artCache = {};
+  const __icon = k => artCache[k] ??= (() => {
+    const [pal, rows] = ART[k] || [{}, ['']], c = document.createElement('canvas'), g = c.getContext('2d');
+    c.width = rows[0].length; c.height = rows.length;
+    rows.forEach((r, y) => [...r].forEach((ch, x) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x, y, 1, 1); } }));
+    return c.toDataURL();
+  })();
   const LEGACY_GAMES = {"top":[],"best":"^memory"};
   let games = await doc('games');
   if (games == null) {  // première ouverture : tu retrouves tes records et tes parties d'avant
