@@ -1,9 +1,9 @@
 {
   "pluginId": "neodex.memoire",
   "repo": "NDesumeur/neodex-plugin-memoire",
-  "version": "1.0.1",
-  "sha256": "c55ed368282eb643dad6d71d8afd224528c3e7496853a9d6f8c30bc81f4bc0b9",
-  "approvedAt": "2026-10-31T17:51:20.963Z",
+  "version": "1.1.0",
+  "sha256": "cf6f375306f83de354bef204c03e08b58ed0184061bedea1ee9b88c7343f1567",
+  "approvedAt": "2026-11-04T10:05:10.905Z",
   "neobase": ">=4.0.0",
-  "signature": "sC806gNCk0HVxYQ/jWUcwPjCENc127vRjgFzB/4gTxN+2U4gDp2OBgwEfj1Ksxdx9r2Udbpig2M5Rh2rDzApAg=="
+  "signature": "xla/E270VAJbtYZc/5oUXsXonWx7/+h1eC2XIDrfv+jaLtV6RjjQPaIUlTE+xRH0q0J6S/lszQXr6KmhOucMBQ=="
 }
