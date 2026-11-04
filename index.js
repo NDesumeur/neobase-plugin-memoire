@@ -1,6 +1,6 @@
 // Mémoire : ton appli d'origine (HTML et code inchangés), livrée en plugin.
-// Ses données sont dans le dossier du plugin, que NeoBase sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoBase.
-// Elle tourne dans le bac à sable de NeoBase, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
+// Ses données sont dans le dossier du plugin, que NeoDex sauvegarde (synchro cloud et sauvegardes) ; à la première ouverture elle reprend ce que tu avais dans NeoDex.
+// Elle tourne dans le bac à sable de NeoDex, avec ses outils d'interface (ctx.host) et seulement les autorisations de son plugin.json.
 const HTML = "<div class=\"appWrap\">\n      <div class=\"agHead\"><span class=\"label\">Mémoire</span><span class=\"hint\" id=\"mmInfo\"></span><div class=\"agNav\"><select class=\"f\" id=\"mmSize\" style=\"width:200px;font-size:14px;padding:6px 10px\"><option value=\"4x3\">Facile · 6 paires</option><option value=\"4x4\" selected>Normal · 8 paires</option><option value=\"5x4\">10 paires</option><option value=\"6x4\">Difficile · 12 paires</option><option value=\"6x5\">15 paires</option><option value=\"6x6\">Expert · 18 paires</option><option value=\"8x5\">20 paires</option><option value=\"8x6\">Maître · 24 paires</option></select><button class=\"btn px\" id=\"mmNew\">NOUVELLE PARTIE</button></div></div>\n      <div id=\"mmGrid\"></div>\n      <div class=\"hint\">Retrouve les paires de logos en un minimum de coups.</div>\n    </div>";
 /*CSS-MOVED*/ const CSS = `#mmGrid{display:grid;grid-template-columns:repeat(4,110px);gap:12px;justify-content:center}
 .mmCard{all:unset;cursor:var(--cp,pointer);width:var(--card,110px);height:var(--card,110px);display:grid;place-items:center;background:var(--violet);box-shadow:0 0 0 3px var(--line2),inset 0 0 0 6px rgba(255,255,255,.08);font:28px var(--title);color:rgba(255,255,255,.5)}
@@ -8,10 +8,10 @@ const HTML = "<div class=\"appWrap\">\n      <div class=\"agHead\"><span class=\
 .mmCard.up{background:var(--win)}
 .mmCard.done{opacity:.55;box-shadow:0 0 0 3px var(--magenta)}
 .mmCard img{width:min(52px,calc(var(--card,110px) - 16px));height:auto;image-rendering:pixelated}
-`;  // le style de ce plugin (il utilise les variables du thème de NeoBase)
+`;  // le style de ce plugin (il utilise les variables du thème de NeoDex)
 export default async function (ctx) {
   const view = ctx.view;
-  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoBase pour s'ouvrir."; return; }
+  if (!ctx.host) { view.textContent = "Ce plugin doit être approuvé par NeoDex pour s'ouvrir."; return; }
   const host = ctx.host, { el, toast, sfx, ask, newTab, pixIcon, PIX, WX } = host;
   const folder = ctx.folder, legacy = ctx.legacy || {};
   ctx.host.addStyle(CSS);
@@ -51,7 +51,7 @@ function gameText(g, w, lines, y0) {  // centred pixel-font lines over a dark ba
 const px = (g, color, x, y, w = 1, h = 1) => { g.fillStyle = color; g.fillRect(Math.round(x), Math.round(y), w, h); };
 function sprite(g, rows, x, y, pal) { rows.forEach((r, j) => { for (let i = 0; i < r.length; i++) { const c = pal[r[i]]; if (c) px(g, c, x + i, y + j); } }); }
   // ---- ton code d'origine ----
-/* ---------- jeu "Mémoire": find the pairs of NeoBase logos, from 6 to 18 pairs ---------- */
+/* ---------- jeu "Mémoire": find the pairs of NeoDex logos, from 6 to 18 pairs ---------- */
 let mm = null;
 function mmStart() {
   const [cols, rows] = $('mmSize').value.split('x').map(Number), pairs = cols * rows / 2;
