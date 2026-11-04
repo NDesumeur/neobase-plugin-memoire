@@ -1,7 +1,7 @@
 {
   "id": "neobase.memoire",
   "name": "Mémoire",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "NDesumeur",
   "description": "Retrouve les paires de logos NeoBase, de 6 à 18 paires, et bats ton record de coups.",
   "icon": "icon.png",
@@ -13,7 +13,8 @@
   "mobile": false,
   "system": false,
   "dependencies": {},
+  "sdk": "2.1.0",
   "permissions": [
-    "full"
+    "storage"
   ]
 }
